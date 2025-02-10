@@ -1,3 +1,5 @@
+@import 'c/cssResource';
+
 * {box-sizing: border-box;}
 
 body { 
@@ -7,7 +9,7 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: var(--primary-color);
   padding: 20px 10px;
   height: 80px;
 }
