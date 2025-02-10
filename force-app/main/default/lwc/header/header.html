@@ -1,18 +1,10 @@
 <template>
-    <div class="header">
-        <a href="#default" class="logo">CompanyLogo</a>
-        <div class="header-right">
-          <a class="active" href="#home">Home</a>
-          <a href="#listings">Listings</a>
-          
-          <template lwc:if={loggedIn}>
-            <a href="#account">Account</a>
-            <a href="#logout">Logout</a>
-          </template>
-          <template lwc:else>
-            <a href="#login">Login</a>
-            <a href="#signup">Signup</a>
-          </template>
-        </div>
-      </div>
+  <div class="header">
+    <a href="#default" class="logo">CompanyLogo</a>
+    <div class="header-right">
+      <template iterator:it={pages}>
+        <c-link key={it.value.name} label={it.value.label} page={it.value.name}></c-link>
+      </template>
+    </div>
+  </div>
 </template>

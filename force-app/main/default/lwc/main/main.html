@@ -1,3 +1,16 @@
 <template>
-    
+    <div class="main">
+        <template lwc:if={isHome}>
+            <c-home></c-home>
+        </template>
+        <template lwc:if={isListing}>
+            <c-property-listings></c-property-listings>
+        </template>
+        <template lwc:if={isDetail}>
+            <c-property-details></c-property-details>
+        </template>
+        <template lwc:if={isAccount}>
+            <c-account></c-account>
+        </template>
+    </div>
 </template>

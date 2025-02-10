@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>NavLinkChannel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>channel to notify when a link has been pressed.</description>
+    <lightningMessageFields>
+        <fieldName>page</fieldName>
+        <description>name of page link is trying to go to</description>
+    </lightningMessageFields>
+</LightningMessageChannel>
