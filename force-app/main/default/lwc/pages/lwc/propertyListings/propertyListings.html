@@ -1,2 +1,20 @@
 <template>
+    <div class="container">
+        <c-expand-filter lwc:ref="expandfilter" bedroomoptions={bedroomoptions}
+            featureoptions={featureoptions}></c-expand-filter>
+        <main>
+            <ul class="slds-list_horizontal slds-m-top_medium slds-m-bottom_medium" style="width: 100%;">
+                <li class="slds-m-left_x-small" style="width: 5%;">
+                    <button onclick={expand}>Filter</button>
+                </li>
+                <li style="width: 90%;">
+                    <c-search-bar></c-search-bar>
+                </li>
+                <li class="slds-m-left_x-small" style="width: 5%;">
+                    <button>Sort</button>
+                </li>
+            </ul>
+            <c-card-grid cardinfo={results} variant="detailed"></c-card-grid>
+        </main>
+    </div>
 </template>

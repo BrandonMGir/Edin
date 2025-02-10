@@ -5,11 +5,15 @@ export default class CardGrid extends LightningElement {
     @api
     cardinfo;
 
-    connectedCallback(){
-        console.log('card info: ' + this.cardinfo);
+    @api
+    variant = 'default';
+
+
+    get isDefault(){
+        return this.variant == 'default';
     }
 
-    renderedCallback(){
-        console.log('card info: ' + this.cardinfo);
+    get isDetailed(){
+        return this.variant == 'detailed';
     }
 }

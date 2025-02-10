@@ -1,0 +1,55 @@
+<template>
+    <aside>
+        <nav>
+            <ul>
+                <li>
+                    <div>
+                        <h3>Type</h3>
+                        <button>House</button>
+                    </div>
+                    <hr>
+                </li>
+                <li>
+                    <div>
+                        <h3>Price</h3>
+                        <input type="text">
+                    </div>
+                    <hr>
+                </li>
+                <li>
+                    <div>
+                        <h3>Location</h3>
+                        <input type="text">
+                        <input type="text">
+                    </div>
+                    <hr>
+                </li>
+                <li>
+                    <div>
+                        <h3>Bedrooms</h3>
+                        <template lwc:if={bedroomoptions}>
+                            <lightning-radio-group name="bedroomOptions" options={bedroomoptions}
+                                value={bedroomfiltervalue} type="radio">
+                            </lightning-radio-group>
+                        </template>
+                    </div>
+                    <hr>
+                </li>
+                <li>
+                    <div>
+                        <h3>Features</h3>
+                        <template lwc:if={featureoptions}>
+                            <lightning-checkbox-group name="featureOptions" options={featureoptions}
+                                value={featurefiltervalue} onchange={handleFeatureChange}></lightning-checkbox-group>
+                        </template>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <button onclick={update}>Update</button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+</template>

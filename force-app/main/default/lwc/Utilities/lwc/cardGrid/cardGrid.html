@@ -2,15 +2,31 @@
     <div class="slds-grid slds-gutters slds-wrap">
         <template lwc:if={cardinfo}>
             <template iterator:it={cardinfo}>
-                <div key={it.value.name} class="slds-col slds-size_1-of-4 slds-m-bottom_medium">
-                    <lightning-card>
-                        <img src={it.value.image}>
-                        <div slot="footer">
-                            <h3>{it.value.name}</h3>
-                            <p>{it.value.info}</p>
-                        </div>
-                    </lightning-card>
-                </div>
+                <template lwc:if={isDefault}>
+                    <div key={it.value.name} class="slds-col slds-size_1-of-4 slds-m-bottom_medium">
+                        <lightning-card>
+                            <img src={it.value.image}>
+                            <div slot="footer">
+                                <h3>{it.value.name}</h3>
+                                <p>{it.value.info}</p>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
+                <template lwc:elseif={isDetailed}>
+                    <div key={it.value.name} class="slds-col slds-size_1-of-4 slds-m-bottom_medium">
+                        <lightning-card>
+                            <img src={it.value.image}>
+                            <div slot="footer">
+                                <h3>{it.value.name}</h3>
+                                <p>{it.value.info}</p>
+                                <p>{it.value.price}</p>
+                                <p>{it.value.bed}</p>
+                                <p>{it.value.location}</p>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </template>
             </template>
         </template>
     </div>
