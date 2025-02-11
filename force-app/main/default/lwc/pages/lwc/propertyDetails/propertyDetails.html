@@ -1,3 +1,45 @@
 <template>
-    <h2>Details</h2>
+    <c-gallery images={images}></c-gallery>
+    <div class="title-bar">
+        <div class="btn-group">
+            <button>favorite</button>
+            <button>Contact</button>
+        </div>
+        <h2>{property_title}</h2>
+    </div>
+    <hr>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_2-of-3">
+            <div>
+                <div>
+                    Price: {price}
+                </div>
+                <hr>
+                <div>
+                    <span>sqft <b>{sqft}</b></span>
+                    <span>bed <b>{bed}</b></span>
+                    <span>bath <b>{bath}</b></span>
+                    <span>sqft lot <b>{lot}</b></span>
+                </div>
+                <hr>
+                <div>
+                    Address: {address}
+                </div>
+                <hr>
+                <div>
+                    Description: {description}
+                </div>
+                <hr>
+                <div>
+                    features
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_1-of-3" style="background-color: chocolate;">
+            map
+        </div>
+    </div>
+    <div>
+        carousel
+    </div>
 </template>

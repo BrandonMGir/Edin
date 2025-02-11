@@ -1,0 +1,51 @@
+.container{
+  position: relative;
+}
+
+.gallery{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.gallery::-webkit-scrollbar{
+  display: none;
+}
+
+.item{
+  flex-shrink: 0;
+  height: 200px;
+  width: auto;
+
+  background-color: #FFF;
+  scroll-snap-align: center;
+}
+
+.gallery img{
+  height: 100%;
+  cursor: pointer;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+
+  width: 3rem;
+  height: 3rem;
+
+  transform: translateY(-50%);
+}
+
+.button--previous {
+  left: 1.5rem;
+
+  transform: rotate(180deg);
+}
+
+.button--next {
+  right: 1.5rem;
+}
