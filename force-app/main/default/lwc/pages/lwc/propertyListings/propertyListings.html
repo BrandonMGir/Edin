@@ -11,7 +11,8 @@
                     <c-search-bar></c-search-bar>
                 </li>
                 <li class="slds-m-left_x-small" style="width: 5%;">
-                    <button>Sort</button>
+                    <lightning-combobox name="sort" value={sortvalue} options={sortoptions} onchange={handleSortChange}
+                        placeholder="Sort"></lightning-combobox>
                 </li>
             </ul>
             <c-card-grid cardinfo={results} variant="detailed"></c-card-grid>

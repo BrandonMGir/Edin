@@ -12,6 +12,16 @@ export default class PropertyListings extends LightningElement {
         {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
     ];
 
+    sortvalue = '';
+    get sortoptions() {
+        return [
+            { label: 'None', value: 'none' },
+            { label: 'Price Asc', value: '1' },
+            { label: 'Price Desc', value: '2' },
+            { label: 'Date', value: '3' },
+        ];
+    }
+
     bedroomfiltervalue = '';
     featurefiltervalue = [];
 
@@ -44,5 +54,9 @@ export default class PropertyListings extends LightningElement {
         else{
             body.classList.remove(this.expandedClass);
         }
+    }
+
+    handleSortChange(event){
+        this.sortvalue = event.detail.value;
     }
 }
