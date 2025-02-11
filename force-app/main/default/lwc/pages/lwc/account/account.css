@@ -1,0 +1,21 @@
+.container, .favorite-line{
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    justify-content: space-evenly;
+}
+
+.favorite-line{
+    justify-content: space-between;
+}
+
+lightning-card{
+    width: 30vw;
+}
+
+lightning-card ul{
+    padding-left: 5px;
+    padding-right: 5px;
+}

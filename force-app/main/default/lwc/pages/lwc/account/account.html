@@ -1,3 +1,25 @@
 <template>
-    <h2>Account</h2>
+    <div class="container">
+        <lightning-card>
+            <img src={profileimage}>
+            <p>{name}</p>
+            <hr>
+            <p>{email}</p>
+            <hr>
+        </lightning-card>
+        <lightning-card class="favorite-container">
+            <ul>
+                <hr>
+                <template iterator:it={favoritedproperties}>
+                    <li key={it.value.name}>
+                        <div class="favorite-line">
+                            <p>{it.value.name}</p>
+                            <button>Delete</button>
+                        </div>
+                        <hr>
+                    </li>
+                </template>
+            </ul>
+        </lightning-card>
+    </div>
 </template>
