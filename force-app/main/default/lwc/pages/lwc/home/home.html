@@ -1,7 +1,9 @@
 <template>
-    <c-carousel></c-carousel>
+    <c-carousel images={featuredproperties}></c-carousel>
     <div class="slds-m-bottom_medium">
-        <c-search-bar></c-search-bar>
+        <c-search-bar onsearch={search}></c-search-bar>
     </div>
-    <c-card-grid cardinfo={properties}></c-card-grid>
+    <template lwc:if={searchresult}>
+        <c-card-grid cardinfo={searchresult}></c-card-grid>
+    </template>
 </template>

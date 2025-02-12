@@ -1,13 +1,15 @@
 <template>
     <div class="slds-size_1-of-3">
         <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
-            <lightning-carousel>
-                <template iterator:it={images}>
-                    <lightning-carousel-image key={it.value.name} src={it.value.image} header="" description=""
-                        href="javascript:void(0);">
-                    </lightning-carousel-image>
-                </template>
-            </lightning-carousel>
+            <template lwc:if={images}>
+                <lightning-carousel>
+                    <template iterator:it={images}>
+                        <lightning-carousel-image key={it.value.name} src={it.value.image} header="" description=""
+                            href="javascript:void(0);">
+                        </lightning-carousel-image>
+                    </template>
+                </lightning-carousel>
+            </template>
         </div>
     </div>
 </template>
