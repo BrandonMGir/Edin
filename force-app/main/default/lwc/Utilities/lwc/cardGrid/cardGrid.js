@@ -8,6 +8,8 @@ export default class CardGrid extends LightningElement {
     @api
     variant = 'default';
 
+    @api
+    page;
 
     get isDefault(){
         return this.variant == 'default';

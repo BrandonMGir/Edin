@@ -13,6 +13,8 @@ export default class Main extends LightningElement {
     @wire(MessageContext)
     messageContext;
 
+    pageparams;
+
     connectedCallback(){
         this.subscribeToChannel();
         console.log(JSON.stringify(this.pages));
@@ -40,6 +42,11 @@ export default class Main extends LightningElement {
         console.log('Navigate to ' + JSON.stringify(page));
 
         let updatedPages = [];
+        this.pageparams = null;
+
+        if(page.id){
+            this.pageparams = page.id;
+        }
         
         this.pages.forEach(x => {
             let updatedPage = {name: x.name, label: x.label, active: false};
@@ -51,11 +58,8 @@ export default class Main extends LightningElement {
             updatedPages.push(updatedPage);
         })
 
-        console.log('UPDATED: ' + updatedPages);
-
+        //console.log('UPDATED: ' + updatedPages);
         this.pages = updatedPages;
-
-        console.log(JSON.stringify(this.pages));
     }
 
     get isHome(){

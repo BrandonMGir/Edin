@@ -14,6 +14,8 @@ export default class Home extends LightningElement {
     //     {name: 'property', info: 'info', image: DUMMY_PROPERTY},
     // ];
 
+    detailpage = 'details';
+
     searchresult;
     featuredproperties;
 
@@ -43,7 +45,7 @@ export default class Home extends LightningElement {
             if(result){
 
                 let mapped = result.map(({property, imageUrls}) =>
-                ({name: property.Price__c, image: imageUrls[0]}));
+                ({id: property.Id, name: property.Price__c, image: imageUrls[0]}));
 
                 console.log('SEARCH MAPPED: ' + JSON.stringify(mapped));
 

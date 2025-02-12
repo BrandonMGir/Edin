@@ -7,7 +7,7 @@
             <c-property-listings></c-property-listings>
         </template>
         <template lwc:if={isDetail}>
-            <c-property-details></c-property-details>
+            <c-property-details propertyid={pageparams}></c-property-details>
         </template>
         <template lwc:if={isAccount}>
             <c-account></c-account>

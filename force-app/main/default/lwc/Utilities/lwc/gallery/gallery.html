@@ -1,13 +1,15 @@
 <template>
-    <div class="container">
-        <div class="gallery" lwc:ref="gallery">
-            <template iterator:it={images}>
-                <div key={it.value.key} class="item">
-                    <img src={it.value.image} onclick={handleClick} data-image={it.value.image}>
-                </div>
-            </template>
+    <template lwc:if={images}>
+        <div class="container">
+            <div class="gallery" lwc:ref="gallery">
+                <template iterator:it={images}>
+                    <div key={it.value.key} class="item">
+                        <img src={it.value.image} onclick={handleClick} data-image={it.value.image}>
+                    </div>
+                </template>
+            </div>
+            <button class="button button--previous" onclick={previous}>➜</button>
+            <button class="button button--next" onclick={next}>➜</button>
         </div>
-        <button class="button button--previous" onclick={previous}>➜</button>
-        <button class="button button--next" onclick={next}>➜</button>
-    </div>
+    </template>
 </template>
