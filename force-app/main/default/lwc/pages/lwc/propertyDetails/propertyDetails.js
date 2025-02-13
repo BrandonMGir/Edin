@@ -15,15 +15,30 @@ export default class PropertyDetails extends LightningElement {
     //     {name: 'img8', image: DUMMY_PROPERTY},
     // ];
 
+    property_title = 'Property Title';
+    price = 100000;
+    sqft = 1000;
+    bed = 3;
+    bath = 1;
+    lot = 3000;
+    address = '123 Somewhere ave. Detroit, MI';
+    description = 'this is a house'
+    features = ["Feature", "Feature", "Feature", "Feature"];
+
     images;
 
     @api
     propertyid;
 
+    nearbyProperties;
+
+    mapMarkers = [];
+
     @wire(getPropertyById, {id: "$propertyid"})
     details({error, data}){
         if(data){
-            console.log('DETAILS: ' + JSON.stringify(data));
+            console.log('DETAILS: ' + JSON.stringify(data.property.Address__c));
+            //console.log('DETAILS: ' + JSON.stringify(data.otherproperties));
 
             let imgData = [];
 
@@ -44,20 +59,23 @@ export default class PropertyDetails extends LightningElement {
             this.description = data.property.Description__c;
             this.features.push(data.property.Features__c);
             this.address = data.property.Address__c.street + ', ' + data.property.Address__c.city + ', ' + data.property.Address__c.stateCode;
+
+            this.mapMarkers = [{
+                location:{
+                    City: data.property.Address__c.city,
+                    Country: data.property.Address__c.countryCode,
+                    PostalCode: data.property.Address__c.postalCode,
+                    State: data.property.Address__c.stateCode,
+                    Street: data.property.Address__c.street
+                }
+            }];
+
+            this.nearbyProperties = data.otherproperties.map(({property, imageUrls}) => 
+                ({id: property.Id, name: property.Name, image: imageUrls[0], page: 'details'})
+             );
         }
         else{
             console.log('ERROR: ' + JSON.stringify(error));
         }
     }
-
-    
-    property_title = 'Property Title';
-    price = 100000;
-    sqft = 1000;
-    bed = 3;
-    bath = 1;
-    lot = 3000;
-    address = '123 Somewhere ave. Detroit, MI';
-    description = 'this is a house'
-    features = ["Feature", "Feature", "Feature", "Feature"];
 }

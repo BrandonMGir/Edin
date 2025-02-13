@@ -25,11 +25,6 @@
   scroll-snap-align: center;
 }
 
-.gallery img{
-  height: 100%;
-  cursor: pointer;
-}
-
 button {
   position: absolute;
   top: 50%;

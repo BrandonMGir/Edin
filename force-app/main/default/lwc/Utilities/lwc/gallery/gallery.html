@@ -1,10 +1,15 @@
 <template>
-    <template lwc:if={images}>
+    <template lwc:if={list}>
         <div class="container">
             <div class="gallery" lwc:ref="gallery">
-                <template iterator:it={images}>
-                    <div key={it.value.key} class="item">
-                        <img src={it.value.image} onclick={handleClick} data-image={it.value.image}>
+                <template iterator:it={list}>
+                    <div key={it.value.name} class="item">
+                        <template lwc:if={isLink}>
+                            <c-gallery-link class="gallery-img" content={it.value}></c-gallery-link>
+                        </template>
+                        <template lwc:else>
+                            <c-gallery-image class="gallery-img" content={it.value}></c-gallery-image>
+                        </template>
                     </div>
                 </template>
             </div>

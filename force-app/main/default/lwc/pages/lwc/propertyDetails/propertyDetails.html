@@ -1,5 +1,5 @@
 <template>
-    <c-gallery images={images}></c-gallery>
+    <c-gallery list={images}></c-gallery>
     <div class="title-bar">
         <div class="btn-group">
             <button>favorite</button>
@@ -35,11 +35,11 @@
                 </div>
             </div>
         </div>
-        <div class="slds-col slds-size_1-of-3" style="background-color: chocolate;">
-            map
+        <div class="slds-col slds-size_1-of-3" style="border: 1px solid black;">
+            <lightning-map map-markers={mapMarkers}></lightning-map>
         </div>
     </div>
     <div>
-        carousel
+        <c-gallery list={nearbyProperties} is-link=true></c-gallery>
     </div>
 </template>

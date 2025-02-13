@@ -20,12 +20,32 @@ public with sharing class PropertyDetailsController {
 
             if(wrapperList == null || wrapperList.size() == 0){return null;}
 
+            //get nearby properties
+            Address address = wrapperList[0].property.Address__c;
+            String addStr = address.street + ', ' + address.city + ', ' + address.stateCode;
+            List<PropertyWrapper> nearbyProperties = PropertyController.getPropertiesWithinDistance(addStr);
+
+            if(nearbyProperties != null){
+                Id currentId = id;
+                Integer i = 0;
+                for(PropertyWrapper pw : nearbyProperties){
+                    if(pw.property.Id == currentId){
+                        nearbyProperties.remove(i);
+                        break;
+                    }
+                    i++;
+                }
+    
+                if(nearbyProperties.size() > 0){
+                    wrapperList[0].otherproperties = nearbyProperties;
+                }
+            }
+            
+
             return wrapperList[0];
 
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }
-
-    //get random carousel of properties
 }

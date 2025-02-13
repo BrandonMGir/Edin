@@ -1,22 +1,17 @@
 import { api, LightningElement } from 'lwc';
-import PictureModal from 'c/pictureModal';
 
 export default class Gallery extends LightningElement {
 
     @api
-    images;
+    list;
 
-    handleClick(event){
-        console.log(event.target.dataset);
-        this.handleModal(event.target.dataset.image);
-    }
+    @api
+    isLink = false;
 
-    async handleModal(image){
-        const result = await PictureModal.open({
-            size: 'large',
-            content: image
-        });
-    }
+    // handleClick(event){
+    //     console.log(event.target.dataset);
+    //     this.dispatchEvent(new CustomEvent('handleclick', {detail: event.target.dataset}))
+    // }
 
     next(){
         const gallery = this.refs.gallery;
