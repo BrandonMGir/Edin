@@ -1,9 +1,23 @@
 <template>
-    <lightning-card onclick={handleClick}>
-        <img src={content.image}>
-        <div slot="footer">
-            <h3>{content.name}</h3>
-            <!-- <p>{content.info}</p> -->
-        </div>
-    </lightning-card>
+    <template lwc:if={isDefault}>
+        <lightning-card onclick={handleClick}>
+            <img src={content.image}>
+            <div slot="footer">
+                <h3>{content.name}</h3>
+                <!-- <p>{content.info}</p> -->
+            </div>
+        </lightning-card>
+    </template>
+    <template lwc:elseif={isDetailed}>
+        <lightning-card onclick={handleClick}>
+            <img src={content.image}>
+            <div slot="footer">
+                <p>{content.type}</p>
+                <p>{content.price}</p>
+                <p>{content.bed}</p>
+                <p>{content.bath}</p>
+                <p>{content.location}</p>
+            </div>
+        </lightning-card>
+    </template>
 </template>

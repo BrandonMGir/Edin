@@ -5,22 +5,19 @@
                 <li>
                     <div>
                         <h3>Type</h3>
-                        <button>House</button>
+                        <lightning-checkbox-group name="type" options={typeoptions} value={typefiltervalue}
+                            onchange={handleTypeChange}>
+                        </lightning-checkbox-group>
                     </div>
                     <hr>
                 </li>
                 <li>
                     <div>
                         <h3>Price</h3>
-                        <input type="text">
-                    </div>
-                    <hr>
-                </li>
-                <li>
-                    <div>
-                        <h3>Location</h3>
-                        <input type="text">
-                        <input type="text">
+                        <lightning-combobox name="minPrice" label="Min" options={minPriceOptions}
+                            value={minpricefiltervalue} onchange={handleMinPriceChange}></lightning-combobox>
+                        <lightning-combobox name="maxPrice" label="Max" options={maxPriceOptions}
+                            value={maxpricefiltervalue} onchange={handleMaxPriceChange}></lightning-combobox>
                     </div>
                     <hr>
                 </li>
@@ -29,7 +26,18 @@
                         <h3>Bedrooms</h3>
                         <template lwc:if={bedroomoptions}>
                             <lightning-radio-group name="bedroomOptions" options={bedroomoptions}
-                                value={bedroomfiltervalue} type="radio">
+                                value={bedroomfiltervalue} type="radio" onchange={handleBedroomChange}>
+                            </lightning-radio-group>
+                        </template>
+                    </div>
+                    <hr>
+                </li>
+                <li>
+                    <div>
+                        <h3>Bathrooms</h3>
+                        <template lwc:if={bedroomoptions}>
+                            <lightning-radio-group name="bathroomOptions" options={bedroomoptions}
+                                value={bathroomfiltervalue} type="radio" onchange={handleBathroomChange}>
                             </lightning-radio-group>
                         </template>
                     </div>

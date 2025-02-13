@@ -15,6 +15,9 @@ export default class CardLink extends LightningElement {
     @api
     page;
 
+    @api
+    variant = 'default'
+
     handleClick(){
         const payload = {
             page: this.page,
@@ -22,5 +25,13 @@ export default class CardLink extends LightningElement {
         };
 
         publish(this.messageContext, NAV_LINK_CHANNEL, payload);
+    }
+
+    get isDefault(){
+        return this.variant == 'default';
+    }
+
+    get isDetailed(){
+        return this.variant == 'detailed';
     }
 }

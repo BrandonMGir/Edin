@@ -1,18 +1,74 @@
 import { LightningElement } from 'lwc';
 import DUMMY_PROPERTY from '@salesforce/resourceUrl/DummyProperty';
+import getFilteredProperties from '@salesforce/apex/PropertyListingsController.getFilteredProperties';
 
 export default class PropertyListings extends LightningElement {
 
-    results = [
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-        {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    ];
+    // results = [
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    // ];
 
     sortvalue = '';
+    expanded = false;
+    expandedClass = 'sb-expanded';
+
+    detailpage = 'details';
+
+    results;
+
+    async search(event){
+        const searchVal = event.detail;
+        const childFilter = this.refs.expandfilter;
+
+        let req = {
+            search: searchVal,
+            sortoption: this.sortvalue == '' ? 'none' : this.sortvalue,
+            type: childFilter.typevalue,
+            minprice: childFilter.minpricevalue,
+            maxprice: childFilter.maxpricevalue,
+            bedrooms: childFilter.bedroomvalue,
+            bathrooms: childFilter.bathroomvalue,
+            features: childFilter.featurevalue
+        };
+
+        console.log('REQ: ' + JSON.stringify(req));
+
+        try{
+            let result = await getFilteredProperties({request: req});
+
+            if(result){
+                console.log('RESULTS: ' + JSON.stringify(result));
+
+                let mapped = result.map(({property, imageUrls}) => 
+                    ({
+                        id: property.Id,
+                        name: property.Name, 
+                        image: imageUrls[0], 
+                        type: property.Type__c,
+                        price: property.Price__c, 
+                        bed: property.Bedrooms__c, 
+                        bath: property.Bathrooms__c,
+                        location: property.Address__c.street + ', ' + property.Address__c.city + ', ' + property.Address__c.stateCode
+                    })
+                 );
+
+                 this.results = mapped;
+            }
+            else{
+                console.log('NO RESULTS');
+            }
+        }
+        catch(error){
+            console.log('ERROR: ' + JSON.stringify(error));
+        }
+    }
+
+    
     get sortoptions() {
         return [
             { label: 'None', value: 'none' },
@@ -22,27 +78,7 @@ export default class PropertyListings extends LightningElement {
         ];
     }
 
-    bedroomfiltervalue = '';
-    featurefiltervalue = [];
-
-    get bedroomoptions() {
-        return [
-            { label: '1', value: '1' },
-            { label: '2', value: '2' },
-            { label: '3+', value: '3' },
-        ];
-    }
-
-    get featureoptions() {
-        return [
-            { label: 'Pet-Friendly', value: '1' },
-            { label: 'Pool', value: '2' },
-            { label: 'Garage', value: '3' },
-        ];
-    }
-
-    expanded = false;
-    expandedClass = 'sb-expanded';
+    
 
     expand(){
         this.expanded = !this.expanded;

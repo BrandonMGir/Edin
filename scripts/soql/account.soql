@@ -1,0 +1,1 @@
+SELECT Id, Name, Address__c, Bathrooms__c, Bedrooms__c, Price__c, Type__c FROM Property__c WHERE DISTANCE(Geolocation__c, GEOLOCATION(42.3180286969697, -83.3442994949495), 'mi') < 50

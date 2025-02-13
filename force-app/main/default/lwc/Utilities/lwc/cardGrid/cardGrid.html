@@ -9,16 +9,7 @@
                 </template>
                 <template lwc:elseif={isDetailed}>
                     <div key={it.value.name} class="slds-col slds-size_1-of-4 slds-m-bottom_medium">
-                        <lightning-card>
-                            <img src={it.value.image}>
-                            <div slot="footer">
-                                <h3>{it.value.name}</h3>
-                                <p>{it.value.info}</p>
-                                <p>{it.value.price}</p>
-                                <p>{it.value.bed}</p>
-                                <p>{it.value.location}</p>
-                            </div>
-                        </lightning-card>
+                        <c-card-link content={it.value} page={page} variant={variant}></c-card-link>
                     </div>
                 </template>
             </template>
