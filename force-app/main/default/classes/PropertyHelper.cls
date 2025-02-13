@@ -70,6 +70,20 @@ public with sharing class PropertyHelper {
         return ids;
     }
 
+    public static List<Id> getPropertyIdsFromFavoriteList(List<Favorited_Property__c> favorites){
+        if(favorites == null || favorites.size() == 0){
+            return null;
+        }
+
+        List<Id> ids = new List<Id>();
+
+        for(Favorited_Property__c f : favorites){
+            ids.add(f.Property__c);
+        }
+
+        return ids;
+    }
+
     private static List<Id> getIdsFromDocLinkList(List<ContentDocumentLink> docLinkList){
         if(docLinkList == null || docLinkList.size() == 0){
             return null;

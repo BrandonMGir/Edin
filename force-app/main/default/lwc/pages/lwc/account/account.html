@@ -13,8 +13,8 @@
                 <template iterator:it={favoritedproperties}>
                     <li key={it.value.name}>
                         <div class="favorite-line">
-                            <p>{it.value.name}</p>
-                            <button>Delete</button>
+                            <p onclick={handleLink} data-id={it.value.id}>{it.value.address}</p>
+                            <button onclick={handleDelete} data-id={it.value.id}>Delete</button>
                         </div>
                         <hr>
                     </li>

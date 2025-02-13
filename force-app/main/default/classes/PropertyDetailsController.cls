@@ -48,4 +48,25 @@ public with sharing class PropertyDetailsController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled(cacheable=true)
+    public static Boolean isFavorited(String userId, String propertyId){
+        try {
+            if((String.isBlank(userId) || String.isEmpty(userId)) || (String.isBlank(propertyId) || String.isEmpty(propertyId))){return null;}
+
+            Id uId = Id.valueOf(userId);
+            Id pId = Id.valueOf(propertyId);
+
+            Integer count = [SELECT COUNT() FROM Favorited_Property__c WHERE User__c = :uId AND Property__c = :pId];
+
+            if(count > 0){
+                return true;
+            }
+
+            return false;
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

@@ -1,6 +1,11 @@
 import { api, LightningElement, wire } from 'lwc';
 import DUMMY_PROPERTY from '@salesforce/resourceUrl/DummyProperty';
 import getPropertyById from '@salesforce/apex/PropertyDetailsController.getPropertyById';
+import favoriteProperty from '@salesforce/apex/AccountController.favoriteProperty';
+import unFavoriteProperty from '@salesforce/apex/AccountController.unFavoriteProperty';
+import Id from '@salesforce/user/Id';
+import { refreshApex } from "@salesforce/apex";
+import isFavorited from '@salesforce/apex/PropertyDetailsController.isFavorited';
 
 export default class PropertyDetails extends LightningElement {
 
@@ -33,6 +38,13 @@ export default class PropertyDetails extends LightningElement {
     nearbyProperties;
 
     mapMarkers = [];
+
+    // favorited;
+    // wireFavorited;
+
+    renderedCallback(){
+        refreshApex(this.isFav);
+    }
 
     @wire(getPropertyById, {id: "$propertyid"})
     details({error, data}){
@@ -76,8 +88,41 @@ export default class PropertyDetails extends LightningElement {
                  );
             }
         }
-        else{
+        else if(error){
             console.log('ERROR: ' + JSON.stringify(error));
         }
+    }
+
+    @wire(isFavorited, {userId: Id, propertyId: "$propertyid"})
+    isFav;
+
+
+    async handleFavorite(){
+        try{
+            let res = await favoriteProperty({userId: Id, propertyId: this.propertyid});
+
+            console.log('FAVORITE: ' + res);
+            await refreshApex(this.isFav);
+        }
+        catch(error){
+            console.log('ERROR: ' + error);
+        }
+    }
+
+    async handleUnfavorite(){
+        try{
+            let res = await unFavoriteProperty({userId: Id, propertyId: this.propertyid});
+
+            console.log('FAVORITE: ' + res);
+            await refreshApex(this.isFav);
+        }
+        catch(error){
+            console.log('ERROR: ' + error);
+        }
+    }
+
+    get isFavorite(){
+        console.log(JSON.stringify(this.isFav.data));
+        return this.isFav.data == true;
     }
 }

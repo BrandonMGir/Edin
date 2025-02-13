@@ -2,10 +2,14 @@
     <c-gallery list={images}></c-gallery>
     <div class="title-bar">
         <div class="btn-group">
-            <button>favorite</button>
+            <template lwc:if={isFavorite}>
+                <button onclick={handleUnfavorite}>unfavorite</button>
+            </template>
+            <template lwc:else>
+                <button onclick={handleFavorite}>favorite</button>
+            </template>
             <button>Contact</button>
         </div>
-        <h2>{property_title}</h2>
     </div>
     <hr>
     <div class="slds-grid slds-gutters">
