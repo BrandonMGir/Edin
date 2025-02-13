@@ -1,11 +1,11 @@
 <template>
     <div class="slds-size_1-of-3">
         <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
-            <template lwc:if={images}>
+            <template lwc:if={content}>
                 <lightning-carousel>
-                    <template iterator:it={images}>
-                        <lightning-carousel-image key={it.value.name} src={it.value.image} header="" description=""
-                            href="javascript:void(0);">
+                    <template iterator:it={content}>
+                        <lightning-carousel-image key={it.value.name} src={it.value.image} onclick={handleClick}
+                            data-id={it.value.id} data-page={it.value.page}>
                         </lightning-carousel-image>
                     </template>
                 </lightning-carousel>

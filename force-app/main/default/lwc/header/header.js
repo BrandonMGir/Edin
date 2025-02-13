@@ -1,8 +1,22 @@
 import { api, LightningElement } from 'lwc';
+import Id from '@salesforce/user/Id';
 
-export default class Header extends LightningElement {
-    loggedIn = false;
+import {NavigationMixin} from "lightning/navigation";
 
-    @api
-    pages = [];
+const LOGOUTPAGEREF = {
+    type: "comm__loginPage",
+    attributes: {
+        actionName: "logout"
+    }
+};
+
+export default class Header extends NavigationMixin(LightningElement) {
+
+    logout(){
+        this[NavigationMixin.Navigate](LOGOUTPAGEREF);
+    }
+
+    get isLoggedIn(){
+        return Id != null;
+    }
 }

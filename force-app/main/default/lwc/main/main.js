@@ -6,7 +6,12 @@ import NAV_LINK_CHANNEL from '@salesforce/messageChannel/navLinkChannel__c';
 export default class Main extends LightningElement {
 
     @api
-    pages = [];
+    pages = [
+        {name: 'home', label: 'Home', active: true},
+        {name: 'listings', label: 'Listings', active: false},
+        {name: 'details', label: 'Details', active: false},
+        {name: 'account', label: 'Account', active: false},
+    ];
 
     subscription = null;
 

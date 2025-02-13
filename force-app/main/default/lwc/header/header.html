@@ -2,8 +2,14 @@
   <div class="header">
     <a href="#default" class="logo">CompanyLogo</a>
     <div class="header-right">
-      <template iterator:it={pages}>
-        <c-link key={it.value.name} label={it.value.label} page={it.value.name}></c-link>
+      <c-link label="Home" page="home"></c-link>
+      <c-link label="Listings" page="listings"></c-link>
+      <template lwc:if={isLoggedIn}>
+        <c-link label="Account" page="account"></c-link>
+        <a onclick={logout}>Logout</a>
+      </template>
+      <template lwc:else>
+        <a onclick={logout}>Login</a>
       </template>
     </div>
   </div>

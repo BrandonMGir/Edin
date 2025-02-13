@@ -9,8 +9,6 @@ export default class GalleryLink extends LightningElement {
     @wire(MessageContext)
     messageContext;
 
-    subscription = null;
-
     handleClick(){
         const payload = {
             page: this.content.page,

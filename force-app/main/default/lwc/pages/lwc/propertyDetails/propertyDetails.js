@@ -70,9 +70,11 @@ export default class PropertyDetails extends LightningElement {
                 }
             }];
 
-            this.nearbyProperties = data.otherproperties.map(({property, imageUrls}) => 
-                ({id: property.Id, name: property.Name, image: imageUrls[0], page: 'details'})
-             );
+            if(data.otherproperties){
+                this.nearbyProperties = data.otherproperties.map(({property, imageUrls}) => 
+                    ({id: property.Id, name: property.Name, image: imageUrls[0], page: 'details'})
+                 );
+            }
         }
         else{
             console.log('ERROR: ' + JSON.stringify(error));

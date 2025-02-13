@@ -24,7 +24,7 @@ export default class Home extends LightningElement {
         if(data){
             console.log('DATA: ' + JSON.stringify(data));
             let mapped = data.map(({property, imageUrls}) => 
-               ({name: property.Name, image: imageUrls[0]})
+               ({name: property.Name, image: imageUrls[0], id: property.Id, page: this.detailpage})
             );
             console.log('MAPPED: ' + JSON.stringify(mapped));
             this.featuredproperties = mapped;
