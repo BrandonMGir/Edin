@@ -2,4 +2,12 @@
 
 .layout{
     background-color: var(--background-color);
+    position: relative;
+    min-height: 100vh;
+}
+
+c-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

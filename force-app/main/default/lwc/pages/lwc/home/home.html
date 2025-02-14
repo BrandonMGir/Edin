@@ -3,6 +3,7 @@
     <div class="slds-m-bottom_medium">
         <c-search-bar onsearch={search}></c-search-bar>
     </div>
+    <br>
     <template lwc:if={searchresult}>
         <c-card-grid cardinfo={searchresult} page={detailpage}></c-card-grid>
     </template>

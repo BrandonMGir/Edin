@@ -10,15 +10,44 @@ body {
 .header {
   overflow: hidden;
   background-color: var(--primary-color);
-  padding: 20px 10px;
+  padding: 5px 30px;
   height: 80px;
 }
 
-.header a.logo {
-  font-size: 25px;
-  font-weight: bold;
+.header .logo {
+  object-fit: contain;
+  height: 100%;
+  float: left;
 }
 
 .header-right {
   float: right;
+  padding: 10px 10px 10px 0px;
+}
+
+.header-right a{
+  font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+    border-style: none;
+    background-color: var(--primary-color);
+}
+
+.header-right a:hover{
+  background-color: var(--primary-color-highlight);
+    color: #fff;
+}
+
+h1{
+  font-family: garamond;
+  color: #fff;
+  font-size: 24px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 12px;
 }

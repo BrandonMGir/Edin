@@ -1,5 +1,6 @@
 import { api, LightningElement } from 'lwc';
 import Id from '@salesforce/user/Id';
+import LOGO_IMAGE from '@salesforce/resourceUrl/logo';
 
 import {NavigationMixin} from "lightning/navigation";
 
@@ -19,4 +20,6 @@ export default class Header extends NavigationMixin(LightningElement) {
     get isLoggedIn(){
         return Id != null;
     }
+
+    logo = LOGO_IMAGE;
 }

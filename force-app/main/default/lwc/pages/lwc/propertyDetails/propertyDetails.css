@@ -1,15 +1,66 @@
-
+.pic-gallery{
+    margin-top: 10px;
+}
 
 .title-bar{
     display: flex;
     flex-direction: row;
+    margin-top: 10px;
 }
 
+.title-bar button{
+    margin-right: 8px;
+}
 
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
+.details span{
+    margin-right: 10px;
+}
 
+.description{
+    font-size: .9rem;
+}
 
-/* .details{
-    display: flex;
-    flex-direction: column;
-} */
+.features{
+    margin-bottom: 6px;
+}
+
+.features span{
+    background-color: #F8411D;
+    color: white;
+    margin-right: 10px;
+    padding: 4px 6px;
+    border-radius: 16px;
+}
+
+.contact-btn{
+    border: none;
+    background-color: #285ba5;
+    padding: 8px;
+    border-radius: 4px;
+    color: white;
+}
+
+.favorite-btn{
+    background-color: #9b99bd;
+    border: none;
+    padding: 4px;
+    border-radius: 24px;
+}
+
+.unfavorite-btn{
+    background-color: #df6ea6;
+    border: none;
+    padding: 4px;
+    border-radius: 24px;
+}
+
+svg {
+    width: auto;
+    height: 2rem;
+    padding: 2px;
+  }

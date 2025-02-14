@@ -28,7 +28,7 @@ export default class PropertyDetails extends LightningElement {
     lot = 3000;
     address = '123 Somewhere ave. Detroit, MI';
     description = 'this is a house'
-    features = ["Feature", "Feature", "Feature", "Feature"];
+    features = [];
 
     images;
 
@@ -49,10 +49,11 @@ export default class PropertyDetails extends LightningElement {
     @wire(getPropertyById, {id: "$propertyid"})
     details({error, data}){
         if(data){
-            console.log('DETAILS: ' + JSON.stringify(data.property.Address__c));
+            //console.log('DETAILS: ' + JSON.stringify(data.property.Address__c));
             //console.log('DETAILS: ' + JSON.stringify(data.otherproperties));
 
             let imgData = [];
+            this.features = [];
 
             if(data.imageUrls){
                 for(let i = 0; i < data.imageUrls.length; i++){
@@ -62,14 +63,18 @@ export default class PropertyDetails extends LightningElement {
 
             this.images = imgData;
 
+            let splitFeatures = data.property.Features__c.split(';');
+            splitFeatures = splitFeatures.map(x => ({name: x}));
+            console.log('FEATURES: ' + splitFeatures);
+
             this.property_title = data.property.Name;
-            this.price = data.property.Price__c;
+            this.price = Number(data.property.Price__c).toLocaleString('en');
             this.sqft = data.property.Square_Footage__c;
             this.bed = data.property.Bedrooms__c;
             this.bath = data.property.Bathrooms__c;
             this.lot = data.property.Lot_Square_Footage__c;
             this.description = data.property.Description__c;
-            this.features.push(data.property.Features__c);
+            this.features = splitFeatures;
             this.address = data.property.Address__c.street + ', ' + data.property.Address__c.city + ', ' + data.property.Address__c.stateCode;
 
             this.mapMarkers = [{

@@ -1,3 +1,5 @@
+@import 'c/cssResource';
+
 .container, .favorite-line{
     display: flex;
     flex-direction: row;
@@ -5,10 +7,19 @@
 
 .container{
     justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .favorite-line{
     justify-content: space-between;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.favorite-line p:hover{
+    color: var(--tertiary-color);
+    cursor: pointer;
 }
 
 lightning-card{
@@ -19,3 +30,41 @@ lightning-card ul{
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.profile{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.profile p{
+    font-weight: 600;
+}
+
+.profile span{
+    font-weight: 300;
+}
+
+.profile img + p{
+    margin-top: 6px;
+}
+
+hr{
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.delete-btn{
+    background-color: transparent;
+    border: none;
+}
+
+.delete-btn:hover{
+    border: 1px solid red;
+    border-radius: 6px;
+}
+
+.delete-btn svg {
+    width: auto;
+    height: 2rem;
+    padding: 2px;
+  }

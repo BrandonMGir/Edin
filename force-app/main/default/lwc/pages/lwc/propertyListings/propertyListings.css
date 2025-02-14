@@ -1,5 +1,55 @@
+@import 'c/cssResource';
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+.container{
+    margin-top: 6px;
+}
+
+.search-bar-container{
+    margin-left: auto;
+    margin-right: 2%;
+    width: 80%;
+}
+
+.sort-container{
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+c-search-bar{
+    display: block;
+    width: 100%;
+    margin: 0px auto;
+}
+
+.filter-btn{
+    position:absolute;
+    left: 2px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+}
+
+.filter-btn:hover{
+    background-color: var(--primary-color-highlight);
+}
+
+.filter-btn.active{
+    background-color: var(--secondary-color);
+}
+
+svg {
+    width: auto;
+    height: 90%;
+    padding: 2px;
+    height: 2.3rem;
+  }
+
+  ul{
+    margin-bottom: 10px;
+  }

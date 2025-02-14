@@ -1,0 +1,69 @@
+@import 'c/cssResource';
+
+h3, p{
+    font-family: var(--primary-font-family);
+}
+
+h3{
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: large;
+}
+
+.container:hover{
+    cursor: pointer;
+    border: 1px solid var(--secondary-color);
+    border-radius: 6px;
+}
+
+.prop-type, .prop-address{
+    text-align: left;
+}
+
+.prop-type{
+    font-weight: 600;
+    font-size: large;
+}
+
+.price-bed-bath{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    font-weight: 600;
+}
+
+.price-bed-bath p{
+    margin-right: 10px;
+    align-self: center;
+}
+
+.price-bed-bath svg{
+    align-self: center;
+}
+
+svg {
+    width: auto;
+    height: 2rem;
+    padding: 2px;
+  }
+
+  .money-icon{
+    color: #00d600;
+    fill: currentColor;
+  }
+
+  .bed-icon{
+    color: #4c809f;
+    fill: currentColor;
+    margin-right: 5px;
+  }
+
+  .bath-icon{
+    color: #4c809f;
+    fill: currentColor;
+    margin-right: 5px;
+  }
+
+  .prop-address{
+    margin-top: 4px;
+  }

@@ -5,12 +5,13 @@ import getFilteredProperties from '@salesforce/apex/PropertyListingsController.g
 export default class PropertyListings extends LightningElement {
 
     // results = [
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
-    //     {name: 'property', info: 'info', image: DUMMY_PROPERTY, price: 100000, bed: 3, location: 'Detroit, MI'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
+    //     {name: 'property', image: DUMMY_PROPERTY, price: 100000, bed: 3, bath: 1, location: '30819 Marquette St Garden City, Michigan', type: 'House'},
     // ];
 
     sortvalue = '';
@@ -46,8 +47,7 @@ export default class PropertyListings extends LightningElement {
 
                 let mapped = result.map(({property, imageUrls}) => 
                     ({
-                        id: property.Id,
-                        name: property.Name, 
+                        id: property.Id, 
                         image: imageUrls[0], 
                         type: property.Type__c,
                         price: property.Price__c, 

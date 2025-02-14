@@ -30,17 +30,23 @@ button {
   top: 50%;
 
   width: 3rem;
-  height: 3rem;
+  height: 6rem;
 
   transform: translateY(-50%);
+
+  border: none;
+
+  color: white;
+  background-color: #313131b8;
+  border-radius: 3px;
 }
 
 .button--previous {
-  left: 1.5rem;
-
+  left: .5rem;
+  top: 30%;
   transform: rotate(180deg);
 }
 
 .button--next {
-  right: 1.5rem;
+  right: .5rem;
 }

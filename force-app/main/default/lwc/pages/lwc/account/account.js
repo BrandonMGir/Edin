@@ -1,5 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import DUMMY_PROPERTY from '@salesforce/resourceUrl/DummyProperty';
+import USER_IMAGE from '@salesforce/resourceUrl/defaultUser';
 import Id from '@salesforce/user/Id';
 import getUser from '@salesforce/apex/AccountController.getUserById';
 import getFavoritedProperties from '@salesforce/apex/AccountController.getFavoritedProperties';
@@ -43,7 +44,7 @@ export default class Account extends LightningElement {
         }
     }
 
-    profileimage = DUMMY_PROPERTY;
+    profileimage = USER_IMAGE;
     name = '';
     email = '';
 
@@ -58,8 +59,6 @@ export default class Account extends LightningElement {
     }
 
     async handleDelete(e){
-        //e.target.dataset.id
-
         try{
             let res = await unFavoriteProperty({userId: Id, propertyId: e.target.dataset.id});
             

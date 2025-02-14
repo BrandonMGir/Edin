@@ -1,3 +1,5 @@
+@import 'c/cssResource';
+
 * {box-sizing: border-box;}
 
 body { 
@@ -6,13 +8,14 @@ body {
 }
 
 .footer{
-    background-color: #f1f1f1;
-    height: 50px;
+    background-color: var(--primary-color);
+    height: 60px;
+    padding: 6px;
 }
 
 .footer a {
     float: left;
-  color: black;
+  color: #fff;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -22,11 +25,9 @@ body {
 }
 
 .footer a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: var(--primary-color-highlight);
   }
   
   .footer a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: var(--secondary-color);
   }

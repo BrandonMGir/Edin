@@ -34,4 +34,8 @@ export default class CardLink extends LightningElement {
     get isDetailed(){
         return this.variant == 'detailed';
     }
+
+    get formattedPrice(){
+        return this.content?.price ? Number(this.content.price).toLocaleString('en') : 0;
+    }
 }
