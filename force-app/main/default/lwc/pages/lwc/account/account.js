@@ -32,11 +32,13 @@ export default class Account extends LightningElement {
         const{data, error} = result;
 
         if(data){
-            console.log('FAVORITES: ' + JSON.stringify(data));
+            //console.log('FAVORITES: ' + JSON.stringify(data));
             this.favoritedproperties = data.map((favorite) => ({
                 id: favorite.Id,
                 address: favorite.Address__c.street + ', ' + favorite.Address__c.city + ', ' + favorite.Address__c.stateCode
             }));
+
+            console.log('FAVORITES: ' + JSON.stringify(this.favoritedproperties));
         }   
         else{
             console.log('ERROR: ' + JSON.stringify(error));
@@ -60,7 +62,8 @@ export default class Account extends LightningElement {
 
     async handleDelete(e){
         try{
-            let res = await unFavoriteProperty({userId: Id, propertyId: e.target.dataset.id});
+            console.log('DELETE: uid: ' + Id + ' dataset: ' + JSON.stringify(e.currentTarget.dataset) );
+            let res = await unFavoriteProperty({userId: Id, propertyId: e.currentTarget.dataset.id});
             
             if(res){
                 console.log('DELETE FAV: ' + JSON.stringify(res));
@@ -70,8 +73,6 @@ export default class Account extends LightningElement {
         catch(error){
             console.log('ERROR: ' + JSON.stringify(error));
         }
-        
-
     }
 
     handleLink(e){
