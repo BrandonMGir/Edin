@@ -1,6 +1,3 @@
-//System.debug(PropertyController.getFeaturedProperties());
-//System.debug(PropertyController.getPropertiesWithinDistance());
+Api_Key__mdt keys = Api_Key__mdt.getInstance('Geolocation_key');
 
-//PropertyDetailsController.getPropertyById('a00Ov00000RtQiHIAV');
-
-AccountController.getFavoritedProperties('005Ov00000NL0MLIA1');
+System.debug('-------------------KEYS: ' + keys.Key__c);

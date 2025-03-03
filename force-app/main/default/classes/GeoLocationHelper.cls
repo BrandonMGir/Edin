@@ -1,10 +1,12 @@
 public with sharing class GeoLocationHelper {
-
-    private static final String apiKey = 'e8ecf9866fc74095adfc186578ebe4ed';
     
     @AuraEnabled
     public static Location getLatLong(String address){
         try {
+
+            Api_Key__mdt keyMeta = Api_Key__mdt.getInstance('Geolocation_key');
+            String apiKey = keyMeta.Key__c;
+
             Http http = new Http();
             HttpRequest request = new HttpRequest();
             String encodedAddress = EncodingUtil.urlEncode(address, 'UTF-8');
