@@ -1,1 +1,3 @@
-SELECT Id FROM Property__c
+SELECT Id FROM Favorited_Property__c WHERE User__c = '005Ov00000NRSJ7IAP' AND Property__c = 'a00Ov00000RtQiHIAV'
+
+SELECT Name FROM User WHERE Id = '005Ov00000NRSJ7IAP'

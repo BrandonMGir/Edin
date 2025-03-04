@@ -18,7 +18,7 @@ public with sharing class AccountController {
 
             if(String.isEmpty(id) || String.isBlank(id)){return null;}
 
-            List<Favorited_Property__c> favoritePropIds = [SELECT Property__r.Id FROM Favorited_Property__c];
+            List<Favorited_Property__c> favoritePropIds = [SELECT Property__r.Id FROM Favorited_Property__c WHERE User__c = :id];
 
             if(favoritePropIds.size() == 0){return null;}
 
